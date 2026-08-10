@@ -177,3 +177,23 @@ h1 {
     padding: 3.2rem 0;
   }
 }
+ /* Contact Icons Container */
+.contact-links {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Base Icon Styling */
+.contact-links a {
+    color: #888888; /* A subtle gray for dark mode */
+    font-size: 2.5rem; /* Makes the icons large and clickable */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effects (The Polish) */
+.contact-links a:hover {
+    color: #ffffff; /* Brightens to white on hover */
+    transform: translateY(-5px); /* Adds a smooth little upward bounce */
+}
