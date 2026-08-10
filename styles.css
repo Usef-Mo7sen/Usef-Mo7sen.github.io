@@ -177,67 +177,47 @@ h1 {
     padding: 3.2rem 0;
   }
 }
- /* Contact Section Container */
+/* Contact Section Container */
 .contact-section {
     text-align: center;
     padding: 60px 20px;
 }
 
-/* Enlarged Heading */
+/* Section Heading */
 .contact-heading {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
     color: #ffffff;
 }
 
-/* Flexbox Grid for the Cards */
+/* Flexbox to keep items in a row */
 .contact-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 30px; /* Space between each contact link */
     justify-content: center;
-}
-
-/* Individual Contact Cards */
-.contact-card {
-    display: flex;
-    flex-direction: column;
     align-items: center;
+}
+
+/* Inline Layout for Icon + Text */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the icon and the text */
     text-decoration: none;
-    color: #a0a0a0; /* Subtle text color */
-    background-color: rgba(255, 255, 255, 0.03); /* Faint background for the card */
-    padding: 40px 30px;
-    border-radius: 16px;
-    min-width: 260px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
+    color: #a0a0a0; /* Subtle gray matching your image */
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    transition: color 0.2s ease;
 }
 
-/* Icon Sizing and Color */
-.contact-card i {
-    font-size: 4.5rem;
-    margin-bottom: 20px;
-    color: #58a6ff; /* Tech-blue accent color */
-    transition: color 0.3s ease;
+/* Icon Sizing */
+.contact-item i {
+    font-size: 1.5rem; /* Makes the icon slightly larger than the text */
 }
 
-/* Text Label Styling */
-.contact-card span {
-    font-size: 1.1rem;
-    font-family: monospace; /* Gives a developer aesthetic */
-    letter-spacing: 0.5px;
-}
-
-/* The Hover Effect (Glow & Lift) */
-.contact-card:hover {
-    transform: translateY(-8px);
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: #58a6ff;
-    box-shadow: 0 12px 24px rgba(88, 166, 255, 0.2); /* Soft blue glow */
-}
-
-.contact-card:hover i {
-    color: #ffffff;
+/* Clean Hover Effect */
+.contact-item:hover {
+    color: #ffffff; /* Brightens text and icon together on hover */
 }
