@@ -28,17 +28,13 @@ themeToggle?.addEventListener("click", () => {
 
   if (!lightThemeEnabled) {
     wipe.classList.add("is-expanded");
-    document.body.classList.remove("light-theme");
   }
 
-  requestAnimationFrame(() => {
-    wipe.classList.add("is-expanded");
+  document.body.classList.toggle("light-theme", lightThemeEnabled);
 
-    if (lightThemeEnabled) {
-      window.setTimeout(() => document.body.classList.add("light-theme"), 500);
-    } else {
-      window.setTimeout(() => wipe.classList.add("is-collapsing"), 40);
-    }
+  requestAnimationFrame(() => {
+    if (lightThemeEnabled) wipe.classList.add("is-expanded");
+    else wipe.classList.add("is-collapsing");
   });
 
   themeToggle.setAttribute("aria-pressed", String(lightThemeEnabled));
@@ -50,5 +46,5 @@ themeToggle?.addEventListener("click", () => {
   window.setTimeout(() => {
     wipe.remove();
     document.body.classList.remove("theme-is-changing");
-  }, lightThemeEnabled ? 750 : 800);
+  }, 750);
 });
