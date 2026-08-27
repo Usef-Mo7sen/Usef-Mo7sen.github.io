@@ -14,7 +14,9 @@
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="#hero">Dental CAD/CAM</a>
+        <a class="brand" href="#hero" aria-label="Dental CAD/CAM home">
+          <img src="assets/yd-logo.png" alt="Dental CAD/CAM logo" height="40" />
+        </a>
         <nav aria-label="Primary">
           <ul class="nav-list">
             <li><a href="#about">About</a></li>
@@ -24,6 +26,10 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
+        <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
       </div>
     </header>
 

@@ -10,3 +10,15 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
+const themeToggle = document.querySelector(".theme-toggle");
+
+themeToggle?.addEventListener("click", () => {
+  const lightThemeEnabled = document.body.classList.toggle("light-theme");
+
+  themeToggle.setAttribute("aria-pressed", String(lightThemeEnabled));
+  themeToggle.setAttribute(
+    "aria-label",
+    lightThemeEnabled ? "Switch to dark mode" : "Switch to light mode",
+  );
+});
