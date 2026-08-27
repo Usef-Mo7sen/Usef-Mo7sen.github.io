@@ -54,6 +54,31 @@ body.light-theme::before {
   opacity: 1;
 }
 
+.theme-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  clip-path: circle(0 at var(--wipe-x) var(--wipe-y));
+  transition: clip-path 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.theme-wipe--light {
+  background: radial-gradient(circle at 50% 45%, #ffffff 0%, #f5faf2 70%);
+}
+
+.theme-wipe--dark {
+  background: radial-gradient(circle at 50% 45%, #1a2133 0%, #0f1117 70%);
+}
+
+.theme-wipe.is-expanded {
+  clip-path: circle(150vmax at var(--wipe-x) var(--wipe-y));
+}
+
+.theme-wipe.is-collapsing {
+  clip-path: circle(0 at var(--wipe-x) var(--wipe-y));
+}
+
 .container {
   width: min(1100px, 92%);
   margin: 0 auto;
@@ -125,14 +150,17 @@ body.light-theme::before {
 }
 
 .nav-list a:hover,
-.nav-list a:focus-visible,
-.contact-links a:hover,
-.contact-links a:focus-visible {
+.nav-list a:focus-visible {
   color: #90cf44;
   background-image: var(--accent-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.contact-links a:hover,
+.contact-links a:focus-visible {
+  color: #90cf44;
 }
 
 .theme-toggle {
@@ -284,13 +312,32 @@ h1 {
 }
 
 .contact-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
   color: var(--muted);
   text-decoration: none;
-  transition: color 0.35s ease;
+  border-radius: 50%;
+  transition: color 0.35s ease, transform 0.25s ease, background-color 0.35s ease;
 }
 
 .contact-links i {
   font-size: 2rem;
+  transition: transform 0.25s ease, filter 0.35s ease;
+}
+
+.contact-links a:hover,
+.contact-links a:focus-visible {
+  transform: translateY(-5px);
+  background: rgba(144, 207, 68, 0.1);
+}
+
+.contact-links a:hover i,
+.contact-links a:focus-visible i {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 8px rgba(144, 207, 68, 0.45));
 }
 
 @media (max-width: 720px) {
@@ -341,4 +388,14 @@ h1 {
 /* Clean Hover Effect */
 .contact-item:hover {
     color: #ffffff; /* Brightens text and icon together on hover */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
