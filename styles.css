@@ -76,6 +76,24 @@ body.light-theme {
   width: auto;
 }
 
+/* الحالة الطبيعية للوجو */
+.brand-logo {
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    /* إضاءة خفيفة جداً في العادي عشان تبين تفاصيله على الدارك مود */
+    filter: drop-shadow(0 0 2px rgba(18, 153, 147, 0.3)); 
+}
+
+/* تأثير الـ Hover لما الماوس ييجي عليه */
+.brand-logo:hover {
+    /* بيترفع لفوق 3 بيكسل وحجمه بيكبر بنسبة 5% */
+    transform: translateY(-3px) scale(1.05);
+    
+    /* توهج مزدوج بلونين اللوجو: الأخضر الفاتح والـ Teal */
+    filter: drop-shadow(0 0 10px rgba(144, 207, 68, 0.8)) 
+            drop-shadow(0 0 20px rgba(18, 153, 147, 0.6));
+}
+
 .nav-list {
   display: flex;
   flex-wrap: wrap;
