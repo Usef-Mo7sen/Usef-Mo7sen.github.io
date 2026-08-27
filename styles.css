@@ -30,14 +30,28 @@ html {
 body {
   margin: 0;
   font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
-  background: radial-gradient(circle at top, #1a2133, var(--bg) 45%);
+  position: relative;
+  isolation: isolate;
+  background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-body.light-theme {
-  background: radial-gradient(circle at top, #ffffff, var(--bg) 55%);
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at top, #1a2133, #0f1117 45%);
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+body.light-theme::before {
+  background: radial-gradient(circle at top, #ffffff, #f5faf2 55%);
+  opacity: 1;
 }
 
 .container {
@@ -52,6 +66,7 @@ body.light-theme {
   background: var(--header-bg);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
+  transition: background-color 0.35s ease, border-color 0.35s ease;
 }
 
 .nav-wrap {
@@ -106,6 +121,7 @@ body.light-theme {
 .nav-list a {
   color: var(--muted);
   text-decoration: none;
+  transition: color 0.35s ease;
 }
 
 .nav-list a:hover,
@@ -130,6 +146,7 @@ body.light-theme {
   background: transparent;
   color: var(--text);
   cursor: pointer;
+  transition: color 0.35s ease, border-color 0.35s ease, transform 0.2s ease;
 }
 
 .theme-toggle:hover,
@@ -138,8 +155,16 @@ body.light-theme {
   border-color: #90cf44;
 }
 
+.theme-toggle:active {
+  transform: scale(0.9) rotate(-12deg);
+}
+
 .theme-toggle .fa-moon {
   display: none;
+}
+
+.theme-toggle i {
+  animation: theme-icon-in 0.35s ease;
 }
 
 .light-theme .theme-toggle .fa-sun {
@@ -148,6 +173,17 @@ body.light-theme {
 
 .light-theme .theme-toggle .fa-moon {
   display: inline-block;
+}
+
+@keyframes theme-icon-in {
+  from {
+    opacity: 0;
+    transform: rotate(-45deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
 }
 
 .section {
@@ -181,6 +217,7 @@ h1 {
 .lead {
   max-width: 800px;
   color: var(--muted);
+  transition: color 0.35s ease;
 }
 
 .button {
@@ -207,6 +244,7 @@ h1 {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
+  transition: background-color 0.35s ease, border-color 0.35s ease;
 }
 
 .model-card,
@@ -248,6 +286,7 @@ h1 {
 .contact-links a {
   color: var(--muted);
   text-decoration: none;
+  transition: color 0.35s ease;
 }
 
 .contact-links i {
