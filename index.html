@@ -18,7 +18,19 @@
         <a class="brand" href="#hero" aria-label="Dental CAD/CAM home">
           <img class="brand-logo" src="Assets/yd-logo.png" alt="YD logo" height="40" />
         </a>
-        <nav aria-label="Primary">
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Primary">
           <ul class="nav-list">
             <li><a href="#about">About</a></li>
             <li><a href="#gallery">3D Gallery</a></li>
@@ -27,9 +39,10 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
+
         <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
-          <i class="fa-solid fa-sun" aria-hidden="true"></i>
-          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <i class="fa-regular fa-sun" aria-hidden="true"></i>
+          <i class="fa-regular fa-moon" aria-hidden="true"></i>
         </button>
       </div>
     </header>
