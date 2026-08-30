@@ -197,8 +197,9 @@ body.light-theme::before {
 }
 
 .theme-toggle i {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   line-height: 1;
+  letter-spacing: 0;
   transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
