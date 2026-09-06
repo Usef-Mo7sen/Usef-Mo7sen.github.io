@@ -76,37 +76,81 @@
 
       <section id="gallery" class="section">
         <div class="container">
-          <h2>3D Gallery</h2>
-          <div class="gallery-grid">
-            <article class="model-card">
-              <h3>Posterior Crown Design</h3>
-              <iframe
-                title="3D model placeholder 1"
-                src="about:blank"
-                loading="lazy"
-                allowfullscreen
-              ></iframe>
-              <p>Placeholder for Sketchfab / exocad webview embed.</p>
+          <h2>3D Gallery: 3 Unit Zirconia Bridge</h2>
+
+          <div class="showcase-grid">
+            <!-- Video Scrubbers -->
+            <article class="model-card scrubber-card">
+              <h3>Buccal & Lingual View</h3>
+              <div class="video-scrubber-container">
+                <video
+                  class="scrubber-video"
+                  src="Assets/Buccal-and-Lingual.mp4"
+                  muted
+                  playsinline
+                  preload="auto">
+                </video>
+                <div class="scrubber-overlay">
+                  <span class="scrubber-badge">
+                    <i class="fa-solid fa-arrows-left-right"></i> Drag to rotate
+                  </span>
+                </div>
+              </div>
+              <div class="scrubber-progress-bar">
+                <div class="scrubber-progress-fill"></div>
+              </div>
             </article>
-            <article class="model-card">
-              <h3>Full-Arch Mockup</h3>
-              <iframe
-                title="3D model placeholder 2"
-                src="about:blank"
-                loading="lazy"
-                allowfullscreen
-              ></iframe>
-              <p>Placeholder for interactive smile design preview.</p>
+
+            <article class="model-card scrubber-card">
+              <h3>Occlusal & Intaglio Surface</h3>
+              <div class="video-scrubber-container">
+                <video
+                  class="scrubber-video"
+                  src="Assets/Occlusal-and-intaglio.mp4"
+                  muted
+                  playsinline
+                  preload="auto">
+                </video>
+                <div class="scrubber-overlay">
+                  <span class="scrubber-badge">
+                    <i class="fa-solid fa-arrows-left-right"></i> Drag to rotate
+                  </span>
+                </div>
+              </div>
+              <div class="scrubber-progress-bar">
+                <div class="scrubber-progress-fill"></div>
+              </div>
             </article>
-            <article class="model-card">
-              <h3>Guided Implant Case</h3>
-              <iframe
-                title="3D model placeholder 3"
-                src="about:blank"
-                loading="lazy"
-                allowfullscreen
-              ></iframe>
-              <p>Placeholder for surgical guide planning model.</p>
+
+            <!-- Image Comparison Sliders -->
+            <article class="model-card slider-card">
+              <h3>Buccal Occlusal Relation</h3>
+              <div class="image-comparison-container">
+                <img src="Assets/Hide-antagonist-buccal.png" alt="Base View" class="img-base" />
+                <div class="img-overlay-wrapper" style="width: 50%;">
+                  <img src="Assets/Show-antagonist-Buccal.png" alt="Overlay View" class="img-overlay" />
+                </div>
+                <div class="slider-thumb" style="left: 50%;">
+                  <div class="thumb-line"></div>
+                  <div class="thumb-line"></div>
+                </div>
+              </div>
+              <p class="helper-text">Drag left/right to compare</p>
+            </article>
+
+            <article class="model-card slider-card">
+              <h3>Lingual Intercuspation</h3>
+              <div class="image-comparison-container">
+                <img src="Assets/Hide-antagonist-Lingual.png" alt="Base View" class="img-base" />
+                <div class="img-overlay-wrapper" style="width: 50%;">
+                  <img src="Assets/Show-antagonist-lingual.png" alt="Overlay View" class="img-overlay" />
+                </div>
+                <div class="slider-thumb" style="left: 50%;">
+                  <div class="thumb-line"></div>
+                  <div class="thumb-line"></div>
+                </div>
+              </div>
+              <p class="helper-text">Drag left/right to compare</p>
             </article>
           </div>
         </div>
