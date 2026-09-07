@@ -573,19 +573,10 @@ h2 {
 .img-overlay-wrapper {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   height: 100%;
   overflow: hidden;
   pointer-events: none;
-  border-left: 2px solid var(--brand-teal);
-  box-shadow: -2px 0 15px rgba(18, 153, 147, 0.5);
-  /* The direction is RTL essentially in the overlay so it clips from the right. We actually want standard clip from left to right usually. Let's make it standard overlay */
-}
-/* override wrapper logic to clip from the left */
-.image-comparison-container .img-overlay-wrapper {
-  right: auto;
-  left: 0;
-  border-left: none;
   border-right: 2px solid var(--brand-teal);
   box-shadow: 2px 0 15px rgba(18, 153, 147, 0.5);
 }

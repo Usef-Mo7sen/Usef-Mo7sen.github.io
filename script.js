@@ -47,6 +47,7 @@ document.querySelectorAll('.video-scrubber-container').forEach(container => {
 
   let isDragging = false;
   let startX = 0;
+  const loopEpsilon = 0.001;
 
   const handleMouseMove = (e) => {
     if (!isDragging || !video) return;
@@ -60,7 +61,7 @@ document.querySelectorAll('.video-scrubber-container').forEach(container => {
 
     // Ensure video loops smoothly
     if (newTime >= video.duration) newTime = 0;
-    if (newTime <= 0) newTime = video.duration;
+    if (newTime <= 0) newTime = Math.max(video.duration - loopEpsilon, 0);
 
     video.currentTime = newTime;
     startX = clientX;
@@ -74,10 +75,18 @@ document.querySelectorAll('.video-scrubber-container').forEach(container => {
     isDragging = true;
     startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
     container.classList.add('is-interacting');
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('touchmove', handleMouseMove, {passive: true});
+    window.addEventListener('touchend', handleMouseUp);
   };
 
   const handleMouseUp = () => {
     isDragging = false;
+    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('mouseup', handleMouseUp);
+    window.removeEventListener('touchmove', handleMouseMove);
+    window.removeEventListener('touchend', handleMouseUp);
     // We intentionally don't remove the 'is-interacting' class immediately
     // so the "Drag to rotate" text stays hidden after they start using it once.
   };
@@ -86,16 +95,12 @@ document.querySelectorAll('.video-scrubber-container').forEach(container => {
   video.addEventListener('loadedmetadata', () => {
     // Mouse events
     container.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseup', handleMouseUp);
 
     // Touch events
     container.addEventListener('touchstart', (e) => {
         // e.preventDefault(); /* removed because passive: true may not allow it or better handled via css */
         handleMouseDown(e);
     }, {passive: true});
-    window.addEventListener('touchmove', handleMouseMove, {passive: true});
-    window.addEventListener('touchend', handleMouseUp);
   });
 });
 
@@ -134,19 +139,23 @@ document.querySelectorAll('.image-comparison-container').forEach(container => {
   const startDrag = (e) => {
     isDragging = true;
     handleDrag(e);
+    window.addEventListener('mousemove', handleDrag);
+    window.addEventListener('mouseup', stopDrag);
+    window.addEventListener('touchmove', handleDrag, {passive: true});
+    window.addEventListener('touchend', stopDrag);
   };
 
   const stopDrag = () => {
     isDragging = false;
+    window.removeEventListener('mousemove', handleDrag);
+    window.removeEventListener('mouseup', stopDrag);
+    window.removeEventListener('touchmove', handleDrag);
+    window.removeEventListener('touchend', stopDrag);
   };
 
   // Mouse events
   container.addEventListener('mousedown', startDrag);
-  window.addEventListener('mousemove', handleDrag);
-  window.addEventListener('mouseup', stopDrag);
 
   // Touch events
   container.addEventListener('touchstart', startDrag, {passive: true});
-  window.addEventListener('touchmove', handleDrag, {passive: true});
-  window.addEventListener('touchend', stopDrag);
 });
