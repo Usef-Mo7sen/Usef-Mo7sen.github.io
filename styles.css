@@ -473,6 +473,23 @@ h2 {
     animation-duration: 0.01ms !important;
   }
 }
+/* Case Title and Divider */
+.case-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.case-divider {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 4rem 0;
+  opacity: 0.5;
+}
+
 /* Showcase Grid Layout */
 .showcase-grid {
   display: grid;
