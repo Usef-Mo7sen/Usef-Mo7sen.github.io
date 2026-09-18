@@ -54,6 +54,15 @@ document.querySelectorAll('.image-comparison-container').forEach(container => {
     overlayImage.style.width = `${containerWidth}px`;
   };
 
+  const setPosition = (percent) => {
+    const boundedPercent = Math.max(0, Math.min(percent, 100));
+    overlayWrapper.style.width = `${boundedPercent}%`;
+    sliderThumb.style.left = `${boundedPercent}%`;
+    if (sliderThumb.getAttribute('role') === 'slider') {
+      sliderThumb.setAttribute('aria-valuenow', String(Math.round(boundedPercent)));
+    }
+  };
+
   // Call once on load, and on window resize
   setOverlayImageWidth();
   window.addEventListener('resize', setOverlayImageWidth);
@@ -67,9 +76,7 @@ document.querySelectorAll('.image-comparison-container').forEach(container => {
     // Calculate x relative to container, bound between 0 and container width
     const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
     const percent = (x / rect.width) * 100;
-
-    overlayWrapper.style.width = `${percent}%`;
-    sliderThumb.style.left = `${percent}%`;
+    setPosition(percent);
   };
 
   const startDrag = (e) => {
@@ -94,4 +101,20 @@ document.querySelectorAll('.image-comparison-container').forEach(container => {
 
   // Touch events
   container.addEventListener('touchstart', startDrag, {passive: true});
+
+  sliderThumb.addEventListener('keydown', (e) => {
+    if (sliderThumb.getAttribute('role') !== 'slider') return;
+
+    const current = Number.parseFloat(sliderThumb.style.left) || 50;
+    let next = current;
+
+    if (e.key === 'ArrowLeft') next = current - 5;
+    if (e.key === 'ArrowRight') next = current + 5;
+    if (e.key === 'Home') next = 0;
+    if (e.key === 'End') next = 100;
+    if (next === current) return;
+
+    e.preventDefault();
+    setPosition(next);
+  });
 });
