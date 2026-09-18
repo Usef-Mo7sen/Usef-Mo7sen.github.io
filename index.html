@@ -242,11 +242,19 @@
             </article>
 
             <!-- Occlusal Image -->
-            <article class="model-card image-card">
+            <article class="model-card slider-card">
               <h3>Occlusal View</h3>
-              <div class="image-container">
-                <img src="Assets/3-Unit-Upper-Zirconia-Bridge/Occlusal view.png" alt="Occlusal view of restoration" class="img-responsive" />
+              <div class="image-comparison-container">
+                <img src="Assets/3-Unit-Upper-Zirconia-Bridge/Occlusal-view-before.png" alt="Occlusal view before restoration" class="img-base" />
+                <div class="img-overlay-wrapper" style="width: 50%;">
+                  <img src="Assets/3-Unit-Upper-Zirconia-Bridge/Occlusal-view-after.png" alt="Occlusal view after restoration" class="img-overlay" />
+                </div>
+                <div class="slider-thumb" style="left: 50%;" role="slider" tabindex="0" aria-label="Upper bridge occlusal comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-orientation="horizontal">
+                  <div class="thumb-line"></div>
+                  <div class="thumb-line"></div>
+                </div>
               </div>
+              <p class="helper-text">Drag left/right to compare</p>
 
               <div class="clinical-checklist-container mt-auto">
                 <ul class="clinical-checklist">
