@@ -473,6 +473,77 @@ h2 {
     animation-duration: 0.01ms !important;
   }
 }
+/* Case Title and Divider */
+.case-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.case-divider {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 4rem 0;
+  opacity: 0.5;
+}
+
+/* Case Checklist */
+.case-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.case-checklist li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.case-checklist li::before {
+  content: "○";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.case-checklist ul {
+  list-style: circle;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.case-checklist ul li {
+  padding-left: 0;
+}
+
+.case-checklist ul li::before {
+  display: none;
+}
+
+.full-width-card {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .case-checklist.columns-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
 /* Showcase Grid Layout */
 .showcase-grid {
   display: grid;
