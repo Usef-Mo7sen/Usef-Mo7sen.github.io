@@ -118,3 +118,17 @@ document.querySelectorAll('.image-comparison-container').forEach(container => {
     setPosition(next);
   });
 });
+
+document.querySelectorAll('img-comparison-slider[role="slider"]').forEach((slider) => {
+  slider.addEventListener('slide', (event) => {
+    const detail = event.detail || {};
+    const rawValue = Number(
+      detail.value ?? detail.percent ?? (typeof detail.x === 'number' ? detail.x * 100 : Number.NaN),
+    );
+
+    if (!Number.isFinite(rawValue)) return;
+
+    const boundedValue = Math.max(0, Math.min(rawValue, 100));
+    slider.setAttribute('aria-valuenow', String(Math.round(boundedValue)));
+  });
+});
