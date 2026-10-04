@@ -497,6 +497,10 @@ h2 {
   gap: 2rem;
 }
 
+#guided-surgery-cards .model-card:first-child {
+  align-self: start;
+}
+
 /* Video Component */
 .model-card h3, .slider-card h3 {
   margin-bottom: 1rem;
@@ -609,6 +613,35 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.stacked-image-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.stacked-image {
+  margin: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: #000;
+}
+
+.stacked-image figcaption {
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.stacked-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .technical-info {
